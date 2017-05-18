@@ -6,7 +6,7 @@ while :
 do
   git checkout . && git pull
   xbuild HappyShopShoppingClient.sln /p:Configuration=Release /t:Rebuild
-  (cd HappyShop.ShoppingClient/bin/Release && chmod +x xinit-startup.sh && startx ./xinit-startup.sh)
+  (cd HappyShop.ShoppingClient/bin/Release && chmod +x xinit-startup.sh && xinit ./xinit-startup.sh)
 done
 
 exit 0
