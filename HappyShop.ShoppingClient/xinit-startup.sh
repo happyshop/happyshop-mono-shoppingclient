@@ -6,7 +6,7 @@
 
 # This hides the mouse pointer.
 # Unclutter needs to be installed on the system.
-#unclutter -display :0 -noevents -grab
+unclutter -display :0 -noevents -grab
 
 # Start the mono application.
 mono ./HappyShop.ShoppingClient.exe
