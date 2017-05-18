@@ -172,6 +172,9 @@
     <EmbeddedResource Include="Screens\WelcomeScreen.resx">
       <DependentUpon>WelcomeScreen.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="config.default.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="xinit-startup.sh">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
