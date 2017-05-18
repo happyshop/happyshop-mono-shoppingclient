@@ -107,13 +107,19 @@ namespace HappyShop.ShoppingClient
             }
             break;
           case Barcode.Types.Command:
-            if (barcode.Trim().ToUpperInvariant() == "UPDATE")
+            barcode = barcode.Trim().ToLowerInvariant();
+            switch (barcode)
             {
-              Application.Exit();
-            }
-            else if (barcode.Trim().ToUpperInvariant() == "STOCK")
-            {
-              SwitchToState(States.StockItems);
+              case "update":
+                Application.Exit();
+                break;
+              case "stock":
+                SwitchToState(States.StockItems);
+                break;
+              default:
+                var errorProvider = new ErrorProvider();
+                errorProvider.SendMail("Unknown command scanned.", "An unknown command has been scanned. THe command was " + barcode);
+                break;
             }
             break;
           default:

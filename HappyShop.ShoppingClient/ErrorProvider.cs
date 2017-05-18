@@ -24,6 +24,22 @@ namespace HappyShop.ShoppingClient
       return s_exceptionsNotToBeMailed.Contains(exception.GetType());
     }
 
+    public void SendMail(string subject, string message)
+    {
+      try
+      {
+        new ErrorDispatcher((string)Configuration.Static.Merged.ErrorDispatcherTarget)
+          .AddRecipients((string)Configuration.Static.Merged.ExceptionRecipientSemicolonSeparatedList)
+          .AddSubject(string.Format("{0}: {1}.", GetType().AssemblyQualifiedName, subject))
+          .AddMessage(message)
+          .Dispatch();
+      }
+      catch (Exception mailException)
+      {
+        Log.Error("Failed to send exception mail.", mailException);
+      }
+    }
+
     private void SendMail(Exception exception, string message)
     {
       if( ! IsIgnoredException(exception) && XmlConvert.ToBoolean((string)Configuration.Static.Merged.ErrorMailingOn))

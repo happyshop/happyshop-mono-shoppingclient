@@ -1,4 +1,6 @@
-﻿namespace HappyShop.ShoppingClient
+﻿using System;
+
+namespace HappyShop.ShoppingClient
 {
   public class Barcode
   {
@@ -34,8 +36,8 @@
       {
         return Types.User;
       }
-      int number;
-      if (int.TryParse(barCode, out number))
+      Int64 number;
+      if (Int64.TryParse(barCode, out number))
       {
         return Types.Item;
       }
