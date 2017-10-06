@@ -1,2 +1,1 @@
-# happyshop-mono-shoppingclient
-HappyShop ShoppingClient Mono implementation
+# PLEASE USE happyshop-mono 
