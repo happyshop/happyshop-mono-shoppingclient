@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 
 namespace HappyShop.ShoppingClient.ImageCaching
@@ -43,7 +44,14 @@ namespace HappyShop.ShoppingClient.ImageCaching
     {
       if( _localCache.Has(barcode) )
       {
-        return Image.FromStream(_localCache.Get(barcode));
+        try
+        {
+          return Image.FromStream(_localCache.Get(barcode));
+        }
+        catch
+        {
+          return null;
+        }
       }
       return null;
     }
